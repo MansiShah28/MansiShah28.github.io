@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mansi Shah — Quality Assurance & Regulatory Affairs</title>
+<style>
+  /* ── EDIT GUIDE ────────────────────────────────────────────────────────────
+     TO ADD YOUR PHOTO:
+       1. Save your photo as "photo.jpg" in the same folder as this file, OR
+       2. Replace src="photo.jpg" below with the full path to your image, OR
+       3. Paste an online image URL directly into src="..."
+
+     TO EDIT TEXT:
+       Search for "<!-- EDIT:" comments throughout — they mark every field
+       you'll want to customise.
+
+     TO CHANGE COLORS:
+       Edit the --navy, --teal, --light values in :root below.
+  ──────────────────────────────────────────────────────────────────────── */
+
+  :root {
+    --navy:   #1a3a5c;
+    --teal:   #0d7c6b;
+    --light:  #f4f8fb;
+    --mid:    #e8f0f7;
+    --text:   #1e2a35;
+    --muted:  #5a6a78;
+    --border: #d0dde8;
+    --white:  #ffffff;
+    --gap:    #e74c3c;    /* gap badge accent */
+    --radius: 10px;
+    --shadow: 0 2px 16px rgba(26,58,92,.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: .02em;
+    text-decoration: none;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  nav ul a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color .2s;
+  }
+  nav ul a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 60%, #1a5c52 100%);
+    color: #fff;
+    padding: 5rem 2rem 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-inner {
+    max-width: 860px;
+    width: 100%;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+  .photo-wrap {
+    flex-shrink: 0;
+  }
+  .photo-wrap img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,.25);
+  }
+  /* shown when photo.jpg is missing */
+  .photo-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    border: 3px dashed rgba(255,255,255,.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+  .photo-placeholder svg {
+    width: 32px; height: 32px;
+    opacity: .5;
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin-bottom: .4rem;
+  }
+  .hero-text .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,.75);
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+  .hero-text .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .tag {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.9);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all .2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #0a6658; }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,.4);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  section:nth-child(even) { background: var(--white); }
+  .section-inner {
+    max-width: 860px;
+    width: 100%;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--teal);
+    margin-bottom: .5rem;
+  }
+  h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    letter-spacing: -.01em;
+  }
+  p { color: var(--muted); margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--text); }
+
+  /* ── STATS ROW ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 2rem 0;
+  }
+  .stat-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-card .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    border-left: 4px solid var(--teal);
+  }
+  .skill-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .skill-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    margin-top: 1.5rem;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.2rem;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .tl-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: .3rem;
+  }
+  .tl-head h4 { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .tl-date {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--mid);
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tl-company {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  .tl-bullets {
+    padding-left: 1.1rem;
+  }
+  .tl-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    line-height: 1.55;
+  }
+
+  /* ── GAPS SECTION ── */
+  .gaps-intro {
+    background: #fef6f5;
+    border: 1px solid #f5c6c2;
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .gaps-intro p { color: #7a3028; font-size: 13.5px; }
+  .gap-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .gap-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .gap-card-head {
+    background: #fff4f3;
+    padding: .75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gap-badge {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--gap);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .gap-card-head h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #7a3028;
+  }
+  .gap-card-body {
+    padding: .85rem 1rem;
+    border-top: 1px solid #f5c6c2;
+  }
+  .gap-card-body .gap-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .gap-card-body p {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact-bar {
+    background: var(--navy);
+    color: #fff;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .contact-inner {
+    max-width: 860px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .contact-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: .3rem;
+  }
+  .contact-text p {
+    color: rgba(255,255,255,.65);
+    font-size: 14px;
+    margin: 0;
+  }
+  .contact-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* ── PHOTO UPLOAD HINT ── */
+  #photoInput { display: none; }
+
+  @media (max-width: 600px) {
+    .hero-inner { flex-direction: column; align-items: flex-start; }
+    .hero-text h1 { font-size: 1.7rem; }
+    nav ul { gap: .9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="logo">Mansi Shah</a><!-- EDIT: your name -->
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gaps">Growth areas</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+
+    <div class="photo-wrap">
+      <!-- EDIT PHOTO:
+           Option 1 – local file: save your photo as "photo.jpg" in this folder.
+           Option 2 – click the circle below while viewing in a browser to pick a file.
+           Option 3 – replace src="photo.jpg" with any image URL.
+      -->
+      <img id="heroPhoto" src="photo.jpg" alt="Mansi Shah"
+           onerror="this.style.display='none';document.getElementById('photoBtn').style.display='flex'">
+      <label id="photoBtn" for="photoInput" class="photo-placeholder"
+             style="display:none"
+             title="Click to add your photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        Click to add<br>your photo
+      </label>
+      <input type="file" id="photoInput" accept="image/*" onchange="loadPhoto(event)">
+    </div>
+
+    <div class="hero-text">
+      <!-- EDIT: Name and title -->
+      <h1>Mansi Shah, M.S.</h1>
+      <p class="subtitle">Quality Assurance &amp; Regulatory Affairs | Medical Devices | Boston, MA</p>
+
+      <div class="tags">
+        <!-- EDIT: Add or remove tags as needed -->
+        <span class="tag">ISO 13485</span>
+        <span class="tag">FDA 21 CFR Part 820</span>
+        <span class="tag">EU MDR 2017/745</span>
+        <span class="tag">CAPA Leadership</span>
+        <span class="tag">IQ/OQ/PQ Validation</span>
+        <span class="tag">ISO 14971</span>
+      </div>
+
+      <div class="hero-cta">
+        <!-- EDIT: Update email and LinkedIn URL -->
+        <a href="mailto:28.shahmansi@gmail.com" class="btn btn-primary">
+          ✉ Get in touch
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="btn btn-outline">
+          LinkedIn ↗
+        </a>
+        <a href="MansiShah_Hologic_QE.docx" download class="btn btn-outline">
+          ↓ Resume
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Introduction</p>
+    <!-- EDIT: Your intro paragraph -->
+    <h2>Quality engineer with a regulatory backbone</h2>
+
+    <p>Bad quality in medical devices doesn't just fail an audit — it fails a patient. That's what drives me. With an M.S. in Regulatory Affairs &amp; Quality Assurance from Northeastern and 2+ years of hands-on QA experience, I've built my career around making sure that doesn't happen — through rigorous CAPA leadership, IQ/OQ/PQ validation, supplier quality oversight, and inspection-ready documentation under <strong>ISO 13485, 21 CFR Part 820, EU MDR 2017/745, and ISO 14971</strong>.</p>
+
+    <p>I've worked across pharma and medical devices — leading a 19-vendor audit program at Mirum Pharmaceuticals, executing process validation and ECO reviews for Class II/III device clients at ClinReg Partners, and cutting non-conformities by 7.5% through manufacturing QA at West-Coast Pharmaceuticals. I move fast in regulated environments, communicate clearly across Engineering, Operations, and R&amp;D, and I don't leave compliance gaps open.</p>
+
+    <!-- EDIT: Update numbers if needed -->
+    <div class="stats">
+      <div class="stat-card"><div class="num">2+</div><div class="lbl">Years in QA &amp; Regulatory</div></div>
+      <div class="stat-card"><div class="num">19</div><div class="lbl">Vendors audited (current role)</div></div>
+      <div class="stat-card"><div class="num">7.5%</div><div class="lbl">Non-conformity reduction</div></div>
+      <div class="stat-card"><div class="num">9.7%</div><div class="lbl">Quality check error reduction</div></div>
+      <div class="stat-card"><div class="num">20%</div><div class="lbl">Faster time-to-market (Class II device)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Core expertise</p>
+    <h2>Skills &amp; competencies</h2>
+    <div class="skills-grid">
+      <!-- EDIT: Add, remove, or update skill cards -->
+      <div class="skill-card">
+        <h4>CAPA Management</h4>
+        <p>End-to-end investigation leadership, root cause analysis (Fishbone, 5-Why, FMEA, FTA), corrective action implementation in Veeva Vault &amp; MasterControl.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Process Validation</h4>
+        <p>IQ/OQ/PQ protocol authoring and execution, Gage R&amp;R measurement system analysis, process qualification for Class II/III devices.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Regulatory Standards</h4>
+        <p>ISO 13485, FDA 21 CFR Part 820, EU MDR 2017/745, ISO 14971, MDSAP, IEC 62304 (SaMD).</p>
+      </div>
+      <div class="skill-card">
+        <h4>Supplier Quality</h4>
+        <p>Vendor audit program design, risk-based supplier evaluation, SCAR execution, third-party compliance oversight.</p>
+      </div>
+      <div class="skill-card">
+        <h4>NCE &amp; Nonconformance</h4>
+        <p>Material Review Board (MRB) support, NCE risk assessments, planned deviations, ECO review and approval.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Inspection Readiness</h4>
+        <p>FDA and Notified Body audit preparation, facility inspection support, gap analysis against ISO 13485 and 21 CFR Part 820.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Technical Documentation</h4>
+        <p>Protocols, investigation reports, SOPs, DHF/DMR maintenance, 510(k) and PMA submission support.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Continuous Improvement</h4>
+        <p>Six Sigma, Lean, Kaizen principles applied to QMS processes; process improvement initiatives with measurable outcomes.</p>
+      </div>
+      <div class="skill-card">
+        <h4>QMS Software</h4>
+        <p>Veeva Vault, MasterControl, Trackwise, MS Office Suite, MS Project, SharePoint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GAPS ── -->
+<section id="gaps">
+  <div class="section-inner">
+    <p class="section-label">Transparency &amp; growth</p>
+    <h2>Where I'm building — and how</h2>
+
+    <div class="gaps-intro">
+      <!-- EDIT: Adjust the intro tone as needed -->
+      <p>Every strong candidate has areas still in development. Here's where I am, what I'm doing about each one, and why it won't slow me down in a role like Hologic's Quality Engineer position.</p>
+    </div>
+
+    <div class="gap-cards">
+      <!-- EDIT: Update gaps and plans as your experience evolves -->
+
+      <div class="gap-card">
+        <div class="gap-card-head">
+          <div class="gap-badge">1</div>
+          <h4>Cleanroom &amp; sterilization experience</h4>
+        </div>
+        <div class="gap-card-body">
+          <p class="gap-label">How I'm closing it</p>
+          <p>My process validation and Gage R&amp;R background is directly transferable. I'm currently completing AAMI/ISO sterilization standards coursework and am prepared to shadow cleanroom operations from day one at Marlborough.</p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-card-head">
+          <div class="gap-badge">2</div>
+          <h4>Manufacturing-floor QE depth</h4>
+        </div>
+        <div class="gap-card-body">
+          <p class="gap-label">How I'm closing it</p>
+          <p>My pharma manufacturing QA at West-Coast — Gage R&amp;R, NCE reduction, internal audits — mirrors device QE fundamentals. I've deliberately sought device-side roles (ClinReg, Keva) to bridge this gap and am based 30 min from Hologic's Marlborough facility.</p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-card-head">
+          <div class="gap-badge">3</div>
+          <h4>Current role is pharma-focused</h4>
+        </div>
+        <div class="gap-card-body">
+          <p class="gap-label">Why it's not a blocker</p>
+          <p>The QMS competencies — CAPA, audit programs, supplier quality, inspection readiness — are identical across pharma and device. I've maintained active device exposure through ClinReg and Keva, and my regulatory depth (21 CFR 820, EU MDR) keeps device skills current.</p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-card-head">
+          <div class="gap-badge">4</div>
+          <h4>Limited MRB hands-on time</h4>
+        </div>
+        <div class="gap-card-body">
+          <p class="gap-label">How I'm closing it</p>
+          <p>I've supported NCE risk assessments and deviation review processes, which directly overlap with MRB workflows. I'm actively studying Hologic's BSH device portfolio and MRB best practices to accelerate ramp-up.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Career history</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <!-- EDIT: Update each role as needed -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-head">
+          <h4>Quality Assurance Specialist</h4>
+          <span class="tl-date">July 2025 – June 2026</span>
+        </div>
+        <div class="tl-company">Mirum Pharmaceuticals — Foster City, CA</div>
+        <ul class="tl-bullets">
+          <li>Leads end-to-end CAPA investigations in Veeva Quality Vault with cross-functional teams; drives measurable reductions in compliance remediation cycle times.</li>
+          <li>Manages 2026 vendor audit program across 19 suppliers using risk-based evaluation strategies; executes SCAR where supplier deviations are identified.</li>
+          <li>Designs risk-based quality and IT audit questionnaires; reviews 85+ audit reports for GxP IT control gaps and data integrity vulnerabilities.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-head">
+          <h4>Quality Assurance Associate</h4>
+          <span class="tl-date">Apr 2024 – Jun 2024</span>
+        </div>
+        <div class="tl-company">ClinReg Partners (Contract) — San Diego, CA</div>
+        <ul class="tl-bullets">
+          <li>Executed IQ/OQ/PQ validation protocols and supported NCE investigations, planned deviations, and ECO review for Class II/III device clients.</li>
+          <li>Authored technical protocols, SOPs, and investigation reports for LivaNova PLC, WuXi AppTec, and 10 other clients under 21 CFR Part 820 and EU MDR.</li>
+          <li>Performed gap analyses against ISO 13485; supported 510(k) and PMA submissions including DHF and DMR documentation.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-head">
+          <h4>Regulatory Affairs Specialist</h4>
+          <span class="tl-date">Apr 2023 – Jan 2025</span>
+        </div>
+        <div class="tl-company">Keva Health — Boston, MA</div>
+        <ul class="tl-bullets">
+          <li>Developed Class II device submission strategy that shortened time-to-market by 20% while maintaining continuous audit readiness.</li>
+          <li>Applied ISO 14971 risk management and design controls for SaMD platform managing chronic respiratory conditions (COPD, Asthma, CF, IPF).</li>
+          <li>Prepared post-approval submissions to FDA; negotiated regulatory responses to CMC/Quality queries.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-head">
+          <h4>Quality Assurance Specialist</h4>
+          <span class="tl-date">Aug 2021 – Aug 2022</span>
+        </div>
+        <div class="tl-company">West-Coast Pharmaceuticals — Ahmedabad, India</div>
+        <ul class="tl-bullets">
+          <li>Validated Class II/III device manufacturing processes; reduced non-conformities by 7.5% through rigorous process validation and technical file maintenance.</li>
+          <li>Led Gage R&amp;R studies and internal quality audits — reduced quality check errors by 9.7%.</li>
+          <li>Applied LEAN 6S principles to quality documentation; reduced paperwork processing time by 15% while enhancing traceability.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">Education</p>
+    <h2>Academic background</h2>
+    <!-- EDIT: Update degrees as needed -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:.5rem">
+      <div class="skill-card" style="border-left-color:var(--navy)">
+        <h4>M.S. Regulatory Affairs &amp; Quality Assurance</h4>
+        <p>Northeastern University, Boston, MA — July 2024</p>
+      </div>
+      <div class="skill-card" style="border-left-color:var(--navy)">
+        <h4>B.S. Pharmacy</h4>
+        <p>Nirma University, Ahmedabad, India — June 2021</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-bar" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <!-- EDIT: Name and role -->
+      <h3>Let's connect</h3>
+      <p>Open to Quality Engineer and QA roles at medical device companies in the Boston area.</p>
+    </div>
+    <div class="contact-links">
+      <!-- EDIT: Update email, phone, LinkedIn -->
+      <a href="mailto:28.shahmansi@gmail.com" class="btn btn-primary">✉ Email me</a>
+      <a href="tel:+15513123367" class="btn btn-outline">📞 551-312-3367</a>
+      <a href="https://linkedin.com" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Photo upload handler
+  function loadPhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById('heroPhoto');
+      const btn = document.getElementById('photoBtn');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      btn.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
